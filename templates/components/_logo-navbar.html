@@ -1,0 +1,26 @@
+<div class="logo-navbar">
+    <div class="left-side">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Exxen.png" alt=""  height="70" style="width:135;">
+        <div class="left-span">
+            <span>Türkiye'nin </span>
+            <p>Dijital Platformu</p>
+        </div>
+    </div>
+    {% if request.path == '/' %}
+    <div class="right-side fs-6 fw-bold">
+        <a class="right-side-a1" href=""><button style="background-color: black; color: #ffc900;">EXXENSPOR Ticari Üye Ol</button></a>
+        <a class="right-side-a2 me-2" href="{% url "login_page" %}"><button style="background-color: #ffc900;">Üye Girişi</button></a>
+        <i class="fa-solid fa-globe"></i>
+        <span class="fs-5">TR</span>
+        <i class="fa-solid fa-caret-down"></i>
+    </div>
+    {% else %}
+    <div class="right-side fs-6 fw-bold">
+        <a class="right-side-a1" href=""><button style="background-color: black; color: #ffc900;">EXXENSPOR Ticari Üye Ol</button></a>
+        <a class="right-side-a2 me-2" href=""><button style="background-color: #ffc900;">Üye Ol</button></a>
+        <i class="fa-solid fa-globe"></i>
+        <span class="fs-5">TR</span>
+        <i class="fa-solid fa-caret-down"></i>
+    </div>
+    {% endif %}
+</div>

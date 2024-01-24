@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <div class="start-page">
+        {% include "components/_logo-navbar.html" %}
+        <div class="login d-flex align-items-center justify-content-center">
+            <div class="frame d-flex flex-column align-items-center justify-content-center">
+                <h2 class="fs-2 fw-bold text-white mb-5">Üye Girişi</h2>
+                <div class="input-container">
+                    <form method="POST" class="card-form" style="color: #fff;">
+                        <span style="color: #ffc900">E-Posta</span>
+                        {% csrf_token %}
+                        {{form.email}}
+                </div>
+                <div class="input-container">
+                    <form method="POST" class="card-form" style="color: #fff;">
+                        <span style="color: #ffc900">Şifre</span>
+                        {{form.password}}
+                    <span toggle="#Password" class="fa fa-fw fa-eye field-icon-if-parent-relative toggle-password login-eye"></span>
+                </div>
+                <div class="check-box-container d-flex align-items-center justify-content-center">
+                    <input type="checkbox" name="RememberMe" id="checkboxG1" checked="checked" value="true" class="css-checkbox">
+                    <label style="color: white" for="checkboxG1" class="css-input-label">Beni Hatırla</label>
+                    <a href="/tr/forgot-password" style="color: white">  Şifremi Unuttum</a>
+                </div>
+                <a  href="{% url "profile_page" %}"><button type='submit' class="fs-5 fw-bold" style="background-color: #ffc900; color: #111">Giriş Yap</button></a>
+                <a href=""><button class="mt-2" style="background-color: #505050; color: #fff;">Telefon numarası ile giriş yap</button></a>
+                {% include "components/_messages.html" %}
+            </div>  
+        </div>
+        {% include "components/_footer.html" %}
+    </div>
+
+{% endblock content %}

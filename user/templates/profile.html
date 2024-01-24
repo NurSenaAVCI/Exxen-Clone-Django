@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="profile-page">
+        <div class="profile-bg">
+            <div class="profile-bg-into"></div>
+            <div class="who-watching d-flex flex-column text-center">
+                <img class="who-watching-img mt-5" src="https://upload.wikimedia.org/wikipedia/commons/d/db/Exxen.png" alt=""  height="73px" style="width:135;">
+                <h2 class="fs-3 fw-bold ms-5">Kim İzliyor?</h2>
+                {% for profile in profiles %}
+                <a class="d-flex text-decoration-none"  href="{% url "home_page" profile.slug %}">
+                    <img style="width: 85px; height: 90px;" src="{{ profile.image.url }}" alt="">
+                    <div class="d-flex align-items-center" style="background-color: #191919; width: 230px; height: 90px;">
+                        <p class="text-white fs-4 ms-3 mt-3">{{ profile.name }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+                <a class="d-flex text-decoration-none"  href="">
+                    <img style="width: 85px; height: 90px;" src="https://asset.exxen.com/config/image/profile_avatar/9.png" alt="">
+                    <div class="d-flex align-items-center" style="background-color: #191919; width: 230px; height: 90px;">
+                        <p class="text-white fs-4 ms-3 mt-3">cocuk</p>
+                    </div>
+                </a>
+                <a class="d-flex text-decoration-none"  href="{% url "profile_add_page" %}">
+                    <div style="height: 90px; width: 85px; background-color: #212121;">
+                        <img src="//wimage.exxen.com/img/icon-add-profile.svg" style=" padding: 19px;">
+                    </div>
+                    <div class="d-flex align-items-center" style="background-color: #191919; width: 230px; height: 90px;">
+                        <p class="text-white fs-4 ms-3 mt-3">Farklı Bir Profil Ekle</p>
+                    </div>
+                </a>
+                
+                    
+            </div>
+            
+        </div>
+    </div>
+
+    {% endblock content %}

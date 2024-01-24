@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="start-page">
+        {% include "components/_logo-navbar.html" %}
+        <div class="fixed-navbar" >
+            <form  method='POST' action="{% url 'register1_page' %}" class="card-form" >
+                {% csrf_token %}
+                <input class='form-control input-placeholder rounded-0' type="text" name="username" required placeholder= 'Ad Soyadı'>
+                <input class='form-control input-placeholder rounded-0' type="email" name="email" required placeholder= 'E-Posta Adresi'>
+                <a class="" href=""><button type='submit' class='btn' style="background-color: #ffc900;">Üye Ol</button></a>
+            </form>
+        </div>
+        <div class="banner">
+            <img class="mt-4" src="https://image.exxen.com/landing/14gun.jpg" alt=""  height="540" width="1020" >
+        </div>
+        <div class="containers">
+            <div class="mixed mt-3">
+                {% for movie in movies %}
+                <div class=" col-lg-3 col-md-6">
+                    
+                    <a class="text-decoration-none" href="">
+                        <div class="card border-0 bg-black mixed-card">
+                            <div class="play-button">
+                                <img src="{{movie.image.url}}" class="card-img-top rounded-0" alt="...">
+                                <div class="i-border"><i class="fa-solid fa-play "></i></div>
+                            </div>
+                            <h5 class="mixed-h5 text-white text-center mt-3 me-5">{{movie.name}}</h5>
+                        </div>
+                    </a> 
+                    
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="screens">
+            <img src="{% static "image/screens.svg" %}" alt="" height="145" width="335">
+            <h1 class="fs-2 fw-bold text-white">Hemen üye ol, cepte, tablette, bilgisayarda, istediğin zaman, istediğin yerde exxen.com, Google Play, AppGallery, App Store, Apple TV ve Android TV'den izlemeye başla.</h1>
+            <div class="apps">
+                <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli.png" alt="" height="45" width="150">
+                <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli.png" alt="" height="45" width="150">
+                <img src="https://tachogram.com/public/badges/appgallery/app_gallery_tr.png" alt="" height="45" width="150">
+            </div>
+            <div class="fonts">
+                <a href="https://www.instagram.com/exxen/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/exxen"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitter.com/Exxentr"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.youtube.com/c/Exxen"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@exxen"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <div class="help-center">
+                <a href="https://yardim-exxen.ortusdesk.com/"><h4>Exxen Yardım Merkezi</h4></a>
+                <a href="https://www.exxen.com/tr/agreement/51438"><p>Künye</p></a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

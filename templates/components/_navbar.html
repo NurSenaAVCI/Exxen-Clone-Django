@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg" style="height: 60px; width: 100%; background-color: #212121;" aria-label="Eighth navbar example">
+    <div class="d-flex align-items-center justify-content-center w-100 navbar-into" style="gap: 50px; margin-left: 70px;">
+        <img class="border border-white" src="https://upload.wikimedia.org/wikipedia/commons/d/db/Exxen.png" alt=""  height="45" style="width:105;"> 
+      <div class="collapse navbar-collapse " id="navbarsExample07">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex" style="gap: 35px; letter-spacing: 0.5px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Anasayfa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Spor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Keşfet</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Listelerim</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center justify-content-center" style="gap: 40px; margin-right: 70px;">
+            <div class="position-relative opacity-25" >
+                <input style="height: 38px; width: 170px; background-color: #111;" type="text" id="js-search-input" placeholder="Ara" class="ui-autocomplete-input rounded search-button">
+                <img style="left: 7px; top: 10px; " class="left-icon position-absolute" alt="arama  ikonu " src="//wimage.exxen.com/img/search.svg" width="17" height="17">
+            </div>
+            <div class="nav-item dropdown text-white radius-2" style="margin-right:90px;" >
+                <a class="nav-link d-flex align-items-center justify-content-center" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="gap: 10px;">
+                    <i class="fa-solid fa-angle-down" style="color: #ffc900;"></i>
+                </a>
+                <ul class="dropdown-menu" style="background-color : #111; border:2px solid #ffc900">
+                  <li><a class="ms-2 text-decoration-none text-white d-flex" href="#">
+                    <img style="width: 30px; height:30px" src="https://asset.exxen.com/config/image/profile_avatar/9.png" alt="">
+                    <p class="ms-3">çocuk</p>
+                  </a></li>
+                  {% for profile in profiles %}
+                    <li><a class="ms-2 text-decoration-none text-white d-flex" href="{% url "home_page" profile.slug %}">
+                      <img style="width: 30px; height:30px" src="{{profile.image.url}}" alt="">
+                      <p class="ms-3">{{profile.name}}</p>
+                    </a></li>
+                    {% endfor %}
+                    <hr class="m-0 text-white">
+                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Profilim</a></li>
+                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Hesap ve Ayarlar</a></li>
+                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Dil</a></li>
+                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="{% url "password_change_page" user.username %}">pass</a></li>
+                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Çıkış Yap</a></li>
+                  
+                </ul>
+            </div>
+        </div>
+
+      </div>
+    </div>
+</nav>

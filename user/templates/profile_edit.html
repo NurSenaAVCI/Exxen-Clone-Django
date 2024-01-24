@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% include "components/_navbar.html" %}
+
+<div class="profile-edit-page w-100 d-flex justify-content-center align-items-end">
+    <div class="profile-edit-into d-flex flex-column align-items-center position-relative">
+        <h3 class="text-white fw-bold mt-5">Profilim</h3>
+        <hr class="text-white w-75 mt-5">
+        <form action="" method='POST' class="mt-4 d-flex justify-content-evenly w-100 align-items-center">
+            {% csrf_token %}
+            {{form.image}}
+            <div class="profile-edit-name">
+                <label class="mt-5 text-white mb-2" for="name">Profil Adım:</label>
+                {{form.name}}
+            </div>
+            <a href=""><button type='submit' class='btn mt-5 w-100' style="background-color: #ffc900;">Değiştir</button></a>
+        </form>
+        <a href="{% url "home_page" profile.slug %}"><button type='submit' class='btn mt-1 position-absolute' style="background-color: #585858; right:149px; top:200px; width: 80px;">İptal</button></a>
+        <form method="post" action="{% url 'profile_delete_page' profile.slug %}" class='position-absolute' style="right:149px; top:288px; width: 80px;">
+            {% csrf_token %}
+            <button type='submit' class='btn mt-1' style="background-color: #FF0000; width:80px;">Sil</button>
+        </form>
+    </div>
+</div>
+{% include "component/_footer.html" %}
+{% include "components/_messages.html" %}
+{% endblock content %}
