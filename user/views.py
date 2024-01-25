@@ -105,7 +105,7 @@ def profile_add_view(request):
             profile.owner = request.user
             profile.save()
             messages.success(request, 'Profile created.')
-            return redirect('home_page', profile_slug=profile.slug)
+            return redirect('profile_page')
         else:
             messages.error(request, 'Profile not created.')
             return render(request, 'profile_add.html', {

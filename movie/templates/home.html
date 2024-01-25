@@ -11,7 +11,7 @@
                   <div class="collapse navbar-collapse " id="navbarsExample07">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex" style="gap: 35px; letter-spacing: 0.5px;">
                       <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="{% url "home_page" profile.slug %}">Anasayfa</a>
+                        <a class="nav-link active" style="color:#ffc900" aria-current="page" href="{% url "home_page" profile.slug %}">Anasayfa</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link active text-white" aria-current="page" href="#">Spor</a>
@@ -39,13 +39,17 @@
                                 <img style="width: 30px; height:30px" src="https://asset.exxen.com/config/image/profile_avatar/9.png" alt="">
                                 <p class="ms-3">çocuk</p>
                               </a></li>
-                              {% for profile in profiles %}
-                                {% if profile.owner != request.user %}
-                                  <li><a class="ms-2 text-decoration-none text-white d-flex" href="#">
-                                    <img style="width: 30px; height:30px" src="{{profile.image.url}}" alt="">
-                                    <p class="ms-3">{{profile.name}}</p>
-                                  </a></li>
-                                {% endif %} 
+                              {% for profil in profiles %}
+                                {% if profil == profile %}
+                                  {{pass}}
+                                {% else %}
+                                  <li>
+                                    <a class="ms-2 text-decoration-none text-white d-flex" href="{% url "home_page" profile.slug %}">
+                                    <img style="width: 30px; height:30px" src="{{profil.image.url}}" alt="">
+                                    <p class="ms-3">{{profil.name}}</p>
+                                    </a>
+                                  </li>
+                                {% endif %}
                               {% endfor %}
                                 <hr class="m-0 text-white">
                                 <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="{% url "profile_edit_page" profile.slug %}">Profilim</a></li>

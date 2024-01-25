@@ -23,19 +23,27 @@
             </div>
             <div class="nav-item dropdown text-white radius-2" style="margin-right:90px;" >
                 <a class="nav-link d-flex align-items-center justify-content-center" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="gap: 10px;">
+                    <img class="rounded" style="width: 40px; height: 40px;" src="{{profile.image.url}}" alt="">
+                    <p class="mt-3">{{profile.name}}</p>
                     <i class="fa-solid fa-angle-down" style="color: #ffc900;"></i>
                 </a>
                 <ul class="dropdown-menu" style="background-color : #111; border:2px solid #ffc900">
-                  <li><a class="ms-2 text-decoration-none text-white d-flex" href="#">
+                  <li><a class="ms-2 text-decoration-none text-white d-flex" href="">
                     <img style="width: 30px; height:30px" src="https://asset.exxen.com/config/image/profile_avatar/9.png" alt="">
                     <p class="ms-3">çocuk</p>
                   </a></li>
-                  {% for profile in profiles %}
-                    <li><a class="ms-2 text-decoration-none text-white d-flex" href="{% url "home_page" profile.slug %}">
-                      <img style="width: 30px; height:30px" src="{{profile.image.url}}" alt="">
-                      <p class="ms-3">{{profile.name}}</p>
-                    </a></li>
-                    {% endfor %}
+                    {% for profil in profiles %}
+                    {% if profil == profile %}
+                      {{pass}}
+                    {% else %}
+                      <li>
+                        <a class="ms-2 text-decoration-none text-white d-flex" href="{% url "home_page" profile.slug %}">
+                        <img style="width: 30px; height:30px" src="{{profil.image.url}}" alt="">
+                        <p class="ms-3">{{profil.name}}</p>
+                        </a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
                     <hr class="m-0 text-white">
                     <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Profilim</a></li>
                     <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Hesap ve Ayarlar</a></li>

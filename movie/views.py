@@ -10,7 +10,7 @@ from django.contrib import messages
 @login_required(login_url="/login/")
 def home_page(request, profile_slug):    
     profile = Profile.objects.get(slug = profile_slug)
-    profiles = Profile.objects.all()
+    profiles = request.user.profile_set.all()
     movies = Movies.objects.all()
     categories = Category.objects.all()
     return render(request, 'home.html', {
@@ -44,5 +44,15 @@ def password_change_view(request, user_username):
     return render(request, 'password_change.html', {
         'form': form,
         'profiles':profiles
+    })
+
+def movie_view(request,profile_slug, movie_slug):
+    profile = Profile.objects.get(slug = profile_slug)
+    profiles = request.user.profile_set.all()
+    movie = Movies.objects.get(slug = movie_slug)
+    return render(request, 'movie.html', {
+        'profile':profile,
+        'profiles':profiles,
+        'movie':movie,
     })
 
