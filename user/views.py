@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import *
@@ -6,15 +7,14 @@ from .models import *
 from movie.models import Movies
 from django.contrib.auth.models import User
 
+
 def index_view (request):
     movies = Movies.objects.all()
-    forms = UserLoginForm()
-
+    
     if request.method == 'POST':
-        return redirect('register1_page')
+        return redirect('register_page')
     
     return render(request, 'index.html', {
-        'forms': forms,
         'movies':movies
     })
 
@@ -51,26 +51,22 @@ def login_view(request):
 
 def register_view(request):
 
+    if request.user.is_authenticated:
+        return redirect('profile_page')
+
     if request.method == 'POST':
-        form = SignUpForm(request.POST or None)
+        form = SignUpForm(request.POST)
 
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-
             user = authenticate(request, username = username, password = password)
-
-            if user is not None:
-                login(request, user)
-                return redirect('profile_page')
+            login(request, user)
+            return redirect('profile_page')
         
-            else:
-                return render(request, 'register.html', {
-                    'form': form,
-                })
-            
         else:
+            form = SignUpForm()
             return render(request, 'register.html', {
                 'form': form, 'error': 'User creation failed'
             })
@@ -85,7 +81,7 @@ def logout_view(request):
     logout(request)
     return redirect('index_page')
 
-
+@login_required(login_url="/login/")
 def profile_view(request):
 
     profiles = Profile.objects.filter(owner = request.user)
@@ -94,7 +90,7 @@ def profile_view(request):
         'profiles': profiles
     })
 
-
+@login_required(login_url="/login/")
 def profile_add_view(request):
 
     if request.method == 'POST':
@@ -117,7 +113,7 @@ def profile_add_view(request):
         'form': form
     })
 
-
+@login_required(login_url="/login/")
 def profile_edit_view(request, profile_slug):
 
     profile = Profile.objects.get(slug = profile_slug)
@@ -143,7 +139,7 @@ def profile_edit_view(request, profile_slug):
         'profile': profile
     })
 
-
+@login_required(login_url="/login/")
 def profile_delete_view(request, profile_slug):
 
     profile = Profile.objects.get(slug = profile_slug)

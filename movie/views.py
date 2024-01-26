@@ -23,6 +23,7 @@ def home_page(request, profile_slug):
 def password_change_view(request, user_username):
     
     profiles = request.user.profile_set.all()
+    profile = request.user.profile_set.first()
     
     if request.method == 'POST':
         form = PasswordForm(request.user, request.POST)
@@ -38,14 +39,17 @@ def password_change_view(request, user_username):
             return render(request, 'password_change.html', {
                 'form': form,
                 'profiles':profiles,
+                'profile':profile
             })
             
     form = PasswordForm(request.user)
     return render(request, 'password_change.html', {
         'form': form,
-        'profiles':profiles
+        'profiles':profiles,
+        'profile':profile
     })
 
+@login_required(login_url="/login/")
 def movie_view(request,profile_slug, movie_slug):
     profile = Profile.objects.get(slug = profile_slug)
     profiles = request.user.profile_set.all()

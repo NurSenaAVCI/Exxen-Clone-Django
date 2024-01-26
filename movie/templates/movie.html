@@ -2,8 +2,18 @@
 
 {% block content %}
 
-{% include "components/_navbar.html" %}
 
+<div class="index-page position-relative">
+    {% include "components/_navbar.html" %}
+    <div class="video w-100" style="height:100hv; overflow: hidden;;">
+        <video class="w-100 rounded-2 " autoplay muted loop src="{{movie.video.url}}">
+            <div class="movie-card d-flex flex-column w-25 " style="gap: 30px;">
+                <h1 class="text-white fw-bold" style="font-size: 70px;">Konuşanlar</h1>
+                <button class="border border-0 fw-bold fs-4" style="width: 180px; height: 55px; background-color: #ffc900; color: black; border-radius: 10px;">Hemen İzle</button>
+            </div>
+        </video>
+    </div>
+</div>
 
 
 {% endblock content %}

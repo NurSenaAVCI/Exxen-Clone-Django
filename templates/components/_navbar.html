@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg" style="height: 60px; width: 100%; background-color: #212121;" aria-label="Eighth navbar example">
+<nav class="navbar navbar-expand-lg position-fixed" style="height: 60px; width: 100%; background: rgba(0, 0, 0, 0.1); z-index: 2;" aria-label="Eighth navbar example">
     <div class="d-flex align-items-center justify-content-center w-100 navbar-into" style="gap: 50px; margin-left: 70px;">
         <img class="border border-white" src="https://upload.wikimedia.org/wikipedia/commons/d/db/Exxen.png" alt=""  height="45" style="width:105;"> 
       <div class="collapse navbar-collapse " id="navbarsExample07">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex" style="gap: 35px; letter-spacing: 0.5px;">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="#">Anasayfa</a>
+            <a class="nav-link active text-white" aria-current="page" href="{% url "home_page" profile.slug %}">Anasayfa</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active text-white" aria-current="page" href="#">Spor</a>
@@ -21,7 +21,7 @@
                 <input style="height: 38px; width: 170px; background-color: #111;" type="text" id="js-search-input" placeholder="Ara" class="ui-autocomplete-input rounded search-button">
                 <img style="left: 7px; top: 10px; " class="left-icon position-absolute" alt="arama  ikonu " src="//wimage.exxen.com/img/search.svg" width="17" height="17">
             </div>
-            <div class="nav-item dropdown text-white radius-2" style="margin-right:90px;" >
+            <div class="nav-item dropdown text-white radius-2"  >
                 <a class="nav-link d-flex align-items-center justify-content-center" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="gap: 10px;">
                     <img class="rounded" style="width: 40px; height: 40px;" src="{{profile.image.url}}" alt="">
                     <p class="mt-3">{{profile.name}}</p>
@@ -45,11 +45,11 @@
                     {% endif %}
                   {% endfor %}
                     <hr class="m-0 text-white">
-                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Profilim</a></li>
+                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="{% url "profile_edit_page" profile.slug %}">Profilim</a></li>
                     <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Hesap ve Ayarlar</a></li>
                     <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Dil</a></li>
                     <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="{% url "password_change_page" user.username %}">pass</a></li>
-                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="#">Çıkış Yap</a></li>
+                    <li><a class="ms-2 text-decoration-none text-white" style="font-size:14px" href="{% url "logout_page" %}">Çıkış Yap</a></li>
                   
                 </ul>
             </div>

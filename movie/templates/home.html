@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div class="nav-video position-relative" style="width: 100vw; height: 990px; color: white;">
+    <div class="nav-video position-relative" >
         <div class="index-page">
             <nav class="navbar navbar-expand-lg" style="height: 60px; width: 100%;" aria-label="Eighth navbar example">
                 <div class="d-flex align-items-center justify-content-center w-100 navbar-into" style="gap: 50px; margin-left: 70px;">
@@ -44,7 +44,7 @@
                                   {{pass}}
                                 {% else %}
                                   <li>
-                                    <a class="ms-2 text-decoration-none text-white d-flex" href="{% url "home_page" profile.slug %}">
+                                    <a class="ms-2 text-decoration-none text-white d-flex" href="{% url "home_page" profil.slug %}">
                                     <img style="width: 30px; height:30px" src="{{profil.image.url}}" alt="">
                                     <p class="ms-3">{{profil.name}}</p>
                                     </a>
@@ -124,7 +124,7 @@
                 </div>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next d-flex" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next" style="width: 80px; opacity: 1;">
+            <button class="carousel-control-next d-flex" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next" style="width: 80px;">
                 <div class="carousel-span d-flex"  style="margin-bottom: 205px; margin-left: 32px; background-color: #ffc900;">
                     <span class="carousel-control-next-icon rounded mt-1 ms-2" aria-hidden="true"></span>
                 </div> 

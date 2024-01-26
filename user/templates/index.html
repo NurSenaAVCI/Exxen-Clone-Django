@@ -5,7 +5,7 @@
     <div class="start-page">
         {% include "components/_logo-navbar.html" %}
         <div class="fixed-navbar" >
-            <form  method='POST' action="{% url 'register1_page' %}" class="card-form" >
+            <form  method='POST' action="{% url 'register_page' %}" class="card-form" >
                 {% csrf_token %}
                 <input class='form-control input-placeholder rounded-0' type="text" name="username" required placeholder= 'Ad Soyadı'>
                 <input class='form-control input-placeholder rounded-0' type="email" name="email" required placeholder= 'E-Posta Adresi'>
@@ -16,10 +16,9 @@
             <img class="mt-4" src="https://image.exxen.com/landing/14gun.jpg" alt=""  height="540" width="1020" >
         </div>
         <div class="containers">
-            <div class="mixed mt-3">
+            <div class="mixed mt-3 row">
                 {% for movie in movies %}
                 <div class=" col-lg-3 col-md-6">
-                    
                     <a class="text-decoration-none" href="">
                         <div class="card border-0 bg-black mixed-card">
                             <div class="play-button">
